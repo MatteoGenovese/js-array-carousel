@@ -10,12 +10,45 @@ const images = [
 let carousel = document.querySelector(`.carousel`)
 
 for (let index = 0; index < images.length; index++) {
-    let element=`<img src="${images[index]}" class="w-100 visually-hidden">`
-    carousel.innerHTML+=element
+    let element=`<img src="${images[index]}" class="w-100 visually-hidden">`;
+    carousel.innerHTML+=element;
 }
+index=0
+carousel.children[index].classList.remove("visually-hidden");
+carousel.children[index].classList.add("d-block");
 
-carousel.children[0].classList.remove("visually-hidden");
-carousel.children[0].classList.add("d-block");
+previousBtn=document.getElementById("previous-btn");
+followingBtn=document.getElementById("following-btn");
+
+followingBtn.addEventListener(`click`,
+function(){
+    carousel.children[index].classList.add("visually-hidden");
+    carousel.children[index].classList.remove("d-block");  
+
+    index+=1;
+    if(index==images.length)
+    {
+        index=0;
+    }
+    carousel.children[index].classList.remove("visually-hidden");
+    carousel.children[index].classList.add("d-block");  
+}
+);
+
+previousBtn.addEventListener(`click`,
+function(){
+    carousel.children[index].classList.add("visually-hidden");
+    carousel.children[index].classList.remove("d-block");  
+
+    index-=1;
+    if(index==-1)
+    {
+        index=images.length-1;
+    }
+    carousel.children[index].classList.remove("visually-hidden");
+    carousel.children[index].classList.add("d-block");  
+}
+);
 
 
 
