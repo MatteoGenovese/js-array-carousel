@@ -20,10 +20,31 @@ carousel.children[index].classList.add("d-block");
 previousBtn=document.getElementById("previous-btn");
 followingBtn=document.getElementById("following-btn");
 
+
+let thumbaMail = document.querySelector(`.thumbmail div.row`)
+for (let index = 0; index < images.length; index++) {
+    let element=`<div class="col"><img src="${images[index]}" class="w-100" style="height: 100%;"> </div>`;
+    thumbaMail.innerHTML+=element;
+}
+
+let thumbMailImage
+
+
+
+thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
+thumbMailImage.classList.add("active-thumbmail");
+
+
 followingBtn.addEventListener(`click`,
 function(){
     carousel.children[index].classList.add("visually-hidden");
     carousel.children[index].classList.remove("d-block");  
+
+    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
+    thumbMailImage.classList.remove("active-thumbmail");
+
+
+    // thumbMailImage.children[index].classList.remove("active");
 
     index+=1;
     if(index==images.length)
@@ -32,6 +53,13 @@ function(){
     }
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
+
+    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
+    thumbMailImage.classList.add("active-thumbmail");
+
+
+
+    
 }
 );
 
@@ -40,6 +68,9 @@ function(){
     carousel.children[index].classList.add("visually-hidden");
     carousel.children[index].classList.remove("d-block");  
 
+    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
+    thumbMailImage.classList.remove("active-thumbmail");
+
     index-=1;
     if(index==-1)
     {
@@ -47,10 +78,8 @@ function(){
     }
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
+
+    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
+    thumbMailImage.classList.add("active-thumbmail");
 }
 );
-
-
-
-
-console.log(carousel)

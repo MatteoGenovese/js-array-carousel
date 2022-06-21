@@ -12,3 +12,7 @@
     object-fit: cover;
     height: 100%;
 }
+
+.active-thumbmail{
+    border: 5px solid black;
+}
