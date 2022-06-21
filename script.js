@@ -1,3 +1,4 @@
+//importo le immagini in un array
 const images = [
     'https://cdn.photographycourse.net/wp-content/uploads/2022/04/Portrait-vs-Landscape-Featured-Image-3.jpg',
     'https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6.jpg',
@@ -6,6 +7,10 @@ const images = [
     'https://iso.500px.com/wp-content/uploads/2021/02/Torres-Del-Paine-Sunset-By-Paul-Reiffer-2-1500x1000.jpg',
     'https://mymodernmet.com/wp/wp-content/uploads/2020/02/Landscape-Photographer-of-the-Year-Sander-Grefte.jpg'
 ];
+
+
+//seleziono il carosello, lo popolo delle immagini nascondendole inizialmente, 
+//infine per la prima immagine rimuovo la classe per nasconderla e ne metto un altra display block
 
 let carousel = document.querySelector(`.carousel`)
 
@@ -17,34 +22,38 @@ index=0
 carousel.children[index].classList.remove("visually-hidden");
 carousel.children[index].classList.add("d-block");
 
-previousBtn=document.getElementById("previous-btn");
-followingBtn=document.getElementById("following-btn");
 
 
-let thumbaMail = document.querySelector(`.thumbmail div.row`)
+//inserisco le immagini della thumbmail
+let thumbaNail = document.querySelector(`.thumbnail div.row`)
 for (let index = 0; index < images.length; index++) {
     let element=`<div class="col"><img src="${images[index]}" class="w-100" style="height: 100%;"> </div>`;
-    thumbaMail.innerHTML+=element;
+    thumbaNail.innerHTML+=element;
 }
 
-let thumbMailImage
+let thumbNailImage
 
 
+//
+thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
+thumbNailImage.classList.add("active-thumbnail");
 
-thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
-thumbMailImage.classList.add("active-thumbmail");
 
+//assegno il codice html dei bottoni a delle varibili per assegnare delle funzionalità
+
+previousBtn=document.getElementById("previous-btn");
+followingBtn=document.getElementById("following-btn");
 
 followingBtn.addEventListener(`click`,
 function(){
     carousel.children[index].classList.add("visually-hidden");
     carousel.children[index].classList.remove("d-block");  
 
-    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
-    thumbMailImage.classList.remove("active-thumbmail");
+    thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
+    thumbNailImage.classList.remove("active-thumbnail");
 
 
-    // thumbMailImage.children[index].classList.remove("active");
+    // thumbNailImage.children[index].classList.remove("active");
 
     index+=1;
     if(index==images.length)
@@ -54,8 +63,8 @@ function(){
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
 
-    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
-    thumbMailImage.classList.add("active-thumbmail");
+    thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
+    thumbNailImage.classList.add("active-thumbnail");
 
 
 
@@ -68,8 +77,8 @@ function(){
     carousel.children[index].classList.add("visually-hidden");
     carousel.children[index].classList.remove("d-block");  
 
-    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
-    thumbMailImage.classList.remove("active-thumbmail");
+    thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
+    thumbNailImage.classList.remove("active-thumbnail");
 
     index-=1;
     if(index==-1)
@@ -79,7 +88,7 @@ function(){
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
 
-    thumbMailImage = document.querySelector(`.thumbmail div.row div.col:nth-child(${index+1}) img`)
-    thumbMailImage.classList.add("active-thumbmail");
+    thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
+    thumbNailImage.classList.add("active-thumbnail");
 }
 );
