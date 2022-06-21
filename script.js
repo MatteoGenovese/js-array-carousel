@@ -22,8 +22,6 @@ index=0
 carousel.children[index].classList.remove("visually-hidden");
 carousel.children[index].classList.add("d-block");
 
-
-
 //inserisco le immagini della thumbmail
 let thumbaNail = document.querySelector(`.thumbnail div.row`)
 for (let index = 0; index < images.length; index++) {
@@ -33,8 +31,9 @@ for (let index = 0; index < images.length; index++) {
 
 let thumbNailImage
 
-
-//
+// con i css selector seleziono l'immagine per dargli il bordo di immagine attiva
+//questo dopo aver utilizzato una nuova row e le col per la dinamicità di inserimento di una nuova immagine
+//nel carosello
 thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
 thumbNailImage.classList.add("active-thumbnail");
 
@@ -52,9 +51,6 @@ function(){
     thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
     thumbNailImage.classList.remove("active-thumbnail");
 
-
-    // thumbNailImage.children[index].classList.remove("active");
-
     index+=1;
     if(index==images.length)
     {
@@ -63,17 +59,8 @@ function(){
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
 
-
-    // con i css selector seleziono l'immagine per dargli il bordo di immagine attiva
-    //questo dopo aver utilizzato una nuova row e le col per la dinamicità di inserimento di una nuova immagine
-    //nel carosello
-
     thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
-    thumbNailImage.classList.add("active-thumbnail");
-
-
-
-    
+    thumbNailImage.classList.add("active-thumbnail");    
 }
 );
 
