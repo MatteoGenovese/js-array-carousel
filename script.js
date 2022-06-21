@@ -63,6 +63,11 @@ function(){
     carousel.children[index].classList.remove("visually-hidden");
     carousel.children[index].classList.add("d-block");  
 
+
+    // con i css selector seleziono l'immagine per dargli il bordo di immagine attiva
+    //questo dopo aver utilizzato una nuova row e le col per la dinamicità di inserimento di una nuova immagine
+    //nel carosello
+
     thumbNailImage = document.querySelector(`.thumbnail div.row div.col:nth-child(${index+1}) img`)
     thumbNailImage.classList.add("active-thumbnail");
 
